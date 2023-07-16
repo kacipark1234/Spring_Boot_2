@@ -47,3 +47,16 @@ spring.jpa.hibernate.ddl-auto=update
 ### 編輯畫面
 ![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/df78cad0-6722-4e39-9874-73b86e93cabe)
 
+## MySQL
+```SQL
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  enabled BOOLEAN NOT NULL
+);
+```
+![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/0d6393ef-7907-4a8a-89bb-25e2ce315c8e)
+
+
