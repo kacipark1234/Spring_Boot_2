@@ -1,8 +1,11 @@
-package com.example.demo;
+package com.example.demo.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.User;
+
 
 @Service
 public interface UserService {
@@ -18,5 +21,7 @@ public interface UserService {
     void updateUser(User user);
 
     void deleteUser(Long id);
+
+	User getUserById(Long id);
 	
 }

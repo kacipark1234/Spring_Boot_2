@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.dao;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -37,5 +39,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Modifying
 	@Query(value = "UPDATE users SET enabled = false WHERE id = :id", nativeQuery = true)
 	void deleteUser(@Param("id") Long id);
+
+	@Query(value = "SELECT * FROM users WHERE id = :id", nativeQuery = true)
+	User getUserById(Long id);
 
 }

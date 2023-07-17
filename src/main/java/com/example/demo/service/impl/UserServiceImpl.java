@@ -1,6 +1,10 @@
-package com.example.demo;
+package com.example.demo.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import com.example.demo.dao.UserRepository;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
 
 import java.util.List;
 
@@ -11,7 +15,13 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+    
+    
+    @Override
+    public User getUserById(Long id ) {
+        return userRepository.getUserById(id);
+    }
+    
     //搜尋有無帳號資料(帳號)
     @Override
     public Boolean getUserByName(String username) {

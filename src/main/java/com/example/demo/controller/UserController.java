@@ -1,15 +1,16 @@
-package com.example.demo;
 
+package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import jakarta.servlet.http.HttpSession;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
+
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -70,8 +71,6 @@ public class UserController {
     @PostMapping("/delete")
     @Transactional
     public String deleteUser(Model model ,@ModelAttribute("user") User user, RedirectAttributes redirectAttributes) {
-    	System.out.println("1");
-    	System.out.println(user);
         userService.deleteUser(user.getId());
         return "redirect:/users";
     }

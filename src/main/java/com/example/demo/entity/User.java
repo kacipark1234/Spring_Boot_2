@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +15,6 @@ public class User {
     private String email;
     private boolean enabled;
 
-    // Constructors
 
     public User() {
     }
@@ -28,7 +27,6 @@ public class User {
         this.enabled = enabled;
     }
 
-    // Getters and setters
 
     public Long getId() {
         return id;
@@ -62,23 +60,13 @@ public class User {
         this.email = email;
     }
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
     
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", enabled=" + enabled +
-                '}';
+    public Boolean getEnabled() {
+        return enabled;
     }
+
 
 }
