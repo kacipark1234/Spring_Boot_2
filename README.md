@@ -32,20 +32,30 @@ spring.jpa.hibernate.ddl-auto=update
 
 # 畫面顯示
 
-## 登入畫面
-![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/f84b21ea-1c7f-459b-9f0e-32773dda24bd)
+## login.html
 
-## 新增帳號
-![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/95633fdb-ace7-4c4d-b71d-5816d2aa3ca5)
+### 登入畫面
+![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/1a1cf485-fe8d-4fbe-8d96-d92190687db9)
 
-## 顯示所有帳號資料
-![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/c9b03c6f-5a58-4756-a519-9ca3448f456d)
+### 新增帳號
+![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/5a7faf3b-823e-4e9a-ab33-b0e3f4a315c7)
 
-## 成功登入畫面
-![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/3a7ffc9a-151e-4084-9418-d172def32db2)
+## users.html
+
+### 顯示所有帳號資料
+![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/0166d023-88ee-4f74-9645-a9e0ca338eaf)
+
+## user.html
+
+### 成功登入畫面
+![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/559aeef1-408d-4092-bba5-dd89b3136c39)
 
 ### 編輯畫面
-![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/df78cad0-6722-4e39-9874-73b86e93cabe)
+![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/2df9870f-5dbc-4f90-9f9a-bbba9ace4046)
+
+### 刪除確認
+![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/4d30ff39-c61a-405b-b98f-73a55cd12011)
+
 
 ## MySQL
 ```SQL
