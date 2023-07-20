@@ -1,6 +1,7 @@
 # Spring_Boot_2
 
 這是一個使用Spring Boot搭建的會員登錄系統練習，採用MVC框架進行設計和實現。該系統提供用戶註冊、登錄和註銷功能，並且只允許已註冊的用戶訪問系統的特定功能。
+目前使用@Controller的方式導向網頁
 
 # 功能
 用戶註冊：用戶可以通過提供用戶名、密碼和電子郵件地址進行註冊  
@@ -69,4 +70,104 @@ CREATE TABLE users (
 ```
 ![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/0d6393ef-7907-4a8a-89bb-25e2ce315c8e)
 
+RESTful
+```
+package com.example.demo.controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.entity.User;
+import com.example.demo.service.UserService;
 
+import java.util.List;
+
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+	@Autowired
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        // 返回登录页面的HTML文件名，例如login.html
+        return "login.html";
+    }
+    
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User user) {
+        User findUser = userService.getUser(user.getUsername(), user.getPassword());
+        if (findUser != null) {
+        	
+            return ResponseEntity.ok("Login successful");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+        }
+    }
+    
+    @GetMapping("/")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<String> createUser(@RequestBody User user) {
+        if (userService.getUserByName(user.getUsername())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists");
+        } else {
+            userService.saveUser(user);
+            return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully");
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        User user = userService.getUserById(id);
+        System.out.println("Get");
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User user) {
+    	System.out.println("Put");
+    	User existingUser = userService.getUserById(id);
+        if (existingUser != null) {
+            user.setId(id);
+            userService.updateUser(user);
+            return ResponseEntity.ok("User updated successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+    	System.out.println("Delete");
+    	User existingUser = userService.getUserById(id);
+        if (existingUser != null) {
+            userService.deleteUser(id);
+            return ResponseEntity.ok("User deleted successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
+
+```
