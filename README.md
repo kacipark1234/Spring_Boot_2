@@ -71,7 +71,8 @@ CREATE TABLE users (
 ![image](https://github.com/kacipark1234/Spring_Boot_2/assets/93324400/0d6393ef-7907-4a8a-89bb-25e2ce315c8e)
 
 RESTful
-```
+```Java
+
 package com.example.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
